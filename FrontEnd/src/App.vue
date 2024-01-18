@@ -14,7 +14,7 @@ import NavBar from './views/home/components/NavBar.vue';
 <style>
   header, .main-content {
     max-width: 1920px;
-    margin: 0 auto; /* This will center your header and main content */
+    margin: 0 auto;
     padding: 0px 288px;
     box-sizing: border-box;
     border-bottom: 1px solid #D9D9D9;

@@ -1,6 +1,6 @@
 <template>
+    <h2>추천 커피챗 채터</h2>
     <div class="container">
-        <h2>추천 커피챗 채터</h2>
     </div>
 </template>
 

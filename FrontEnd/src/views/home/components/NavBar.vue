@@ -3,13 +3,13 @@
     <nav>
       <div class="nav-container" @mouseover="showDropdown = true" @mouseleave="showDropdown = false">
         <RouterLink class="logo-link" :to="{ name: 'Home' }">
-          <logo>JOBLOG</logo>
+          <div class="logo">JOBLOG</div>
         </RouterLink>
         <div class="nav-links">
-          <RouterLink class="link" :to="{ name: 'Home' }">채용공고</RouterLink>
+          <RouterLink class="link" :to="{ name: 'Jobs' }">채용공고</RouterLink>
           <RouterLink class="link" :to="{ name: 'Login' }">취준일지</RouterLink>
           <RouterLink class="link" :to="{ name: 'Home' }">커뮤니티</RouterLink>
-          <RouterLink class="link" :to="{ name: 'Home' }">취업Talk</RouterLink>
+          <RouterLink class="link" :to="{ name: 'Coffee' }">취업Talk</RouterLink>
         </div>
         <RouterLink :to="{ name: 'Login' }">
           <button class="login-button">로그인</button>
@@ -61,7 +61,7 @@ const showDropdown = ref(false);
     line-height: normal;
   }
 
-  logo {
+  .logo {
     color: #000;
     font-family: Pretendard Variable;
     font-size: 40px;
@@ -93,6 +93,7 @@ const showDropdown = ref(false);
   display: flex;
   align-items: center;
   position: relative; /* Position relative for absolute positioning of children */
+  gap: 120px;
 }
 
   .nav-links {
