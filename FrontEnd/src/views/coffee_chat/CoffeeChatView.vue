@@ -26,6 +26,7 @@
     border: 1px solid black;
     margin: 10px;
     height: 300px;
+    width: 100%;
   }
 
   .text {

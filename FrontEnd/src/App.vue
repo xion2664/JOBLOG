@@ -31,5 +31,6 @@ import NavBar from './views/home/components/NavBar.vue';
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 </style>
