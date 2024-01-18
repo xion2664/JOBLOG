@@ -8,7 +8,7 @@
         <div class="nav-links">
           <RouterLink class="link" :to="{ name: 'Jobs' }">채용공고</RouterLink>
           <RouterLink class="link" :to="{ name: 'Login' }">취준일지</RouterLink>
-          <RouterLink class="link" :to="{ name: 'Home' }">커뮤니티</RouterLink>
+          <RouterLink class="link" :to="{ name: 'ApplicantBoard' }">커뮤니티</RouterLink>
           <RouterLink class="link" :to="{ name: 'Coffee' }">취업Talk</RouterLink>
         </div>
         <RouterLink :to="{ name: 'Login' }">

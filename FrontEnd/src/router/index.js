@@ -5,7 +5,9 @@ import Test from '../views/test.vue'
 import CoffeeChat from '@/views/coffee_chat/CoffeeChatView.vue'
 import EmployeeRegister from '@/views/profile/EmployeeRegisterView.vue'
 import JobPost from '@/views/job_post/JobPostView.vue'
-import JobDetail from '@/views/job_post/JobDetailView.vue'
+import JobDetail from '@/views/job_post/JobDetailView.vue' 
+import ApplicantBoard from '@/views/community/board/ApplicantBoardView.vue'
+import EmployeeBoard from '@/views/community/board/EmployeeBoardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,7 +48,17 @@ const router = createRouter({
       component: JobDetail
       // 추후에 각 번호로 입력 받아야함
       // /job-detail/<int: detail-pk>
-    }
+    },
+    {
+      path: '/applicant-board',
+      name: 'ApplicantBoard',
+      component: ApplicantBoard
+    },
+    {
+      path: '/employee-board',
+      name: 'EmployeeBoard',
+      component: EmployeeBoard
+    },
   ]
 })
 
