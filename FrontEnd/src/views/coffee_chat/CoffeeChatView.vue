@@ -26,7 +26,7 @@
     border: 1px solid black;
     margin: 10px;
     height: 300px;
-    width: 100%;
+    width: 1344px;
   }
 
   .text {
@@ -34,6 +34,7 @@
     margin-bottom: 0;
     padding-bottom: 0;
     gap: 0;
+    width: 1344px;
   }
 
   .subtitle {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="article-container">
         <table>
             <colgroup>
                 <col style="width: 50px;">
@@ -30,5 +30,7 @@
 </script>
 
 <style scoped>
-
+    .article-container {
+        width: 1344px;
+    }
 </style>

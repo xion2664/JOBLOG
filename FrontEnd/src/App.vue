@@ -12,8 +12,12 @@ import NavBar from './views/home/components/NavBar.vue';
 </script>
 
 <style>
+  body {
+    min-width: 1920px;
+  }
+
   header, .main-content {
-    max-width: 1920px;
+    width: 1920px;
     margin: 0 auto;
     padding: 0px 288px;
     box-sizing: border-box;
@@ -28,7 +32,7 @@ import NavBar from './views/home/components/NavBar.vue';
   }
 
   .main-content {
-    width: 100%;
+    width: 1344px;
     display: flex;
     flex-direction: column;
     align-items: center;

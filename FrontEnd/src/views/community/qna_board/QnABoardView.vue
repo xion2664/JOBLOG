@@ -1,14 +1,12 @@
 <template>
-    <div class="qna-header">
-        <div class="header-left">
-            <h4>Q&A 게시판</h4>
-            <span>현직자와 취준생 간의 궁금한 이야기</span>
-        </div>
-        <div class="header-right">
-            <input type="text"> 검색기능 
-        </div>
+    <div class="second-nav">
+        <RouterLink :to="{ name: 'ApplicantBoard' }"> <div>취준게시판</div></RouterLink> |
+
+        <RouterLink :to="{ name: 'EmployeeBoard' }"> <div>현직게시판</div> </RouterLink> |
+        <div>QnA게시판</div>
     </div>
-    <div class="qna-body">
+    <div>
+        <h3>QnA 게시판</h3>
 
     </div>
 </template>
@@ -18,17 +16,11 @@
 </script>
 
 <style scoped>
-  .qna-header { 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .second-nav {
+    display: flex;
+    justify-content: flex-start;
+    width: 1344px;
+    gap: 20px;
   }
 
-  .header-left {
-
-  }
-
-  .qna-body {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  }
 </style>

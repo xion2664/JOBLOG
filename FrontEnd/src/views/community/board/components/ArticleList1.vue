@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="article-container">
         <table>
             <colgroup>
                 <col style="width: 50px;">
@@ -40,5 +40,9 @@ import ArticleListItem1 from "./items/ArticleListItem1.vue";
 <style scoped>
     th {
         border-bottom: 1px black solid;
+    }
+
+    .article-container {
+        width: 1344px;
     }
 </style>
