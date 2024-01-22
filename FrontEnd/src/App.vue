@@ -32,7 +32,7 @@ import NavBar from './views/home/components/NavBar.vue';
   }
 
   .main-content {
-    width: 1344px;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -3,39 +3,49 @@
   <button @click="toggleLogin">로그인 상태 전환인 척하는 버튼</button>
 
   <div v-if="!isLoggedIn">
-  <div class="main-img-container">
-      <img src="../../assets/img/home/main-img-1.png" alt="main img" class="main-img">
-  </div>
+    <div class="main-img-container">
+      <img
+        src="../../assets/img/home/main-img-1.png"
+        alt="main img"
+        class="main-img"
+      />
+    </div>
 
-  <RouterLink :to="{ name: 'Login' }">
-      <img src="../../assets/img/home/main-login-img.png" alt="loginbutton" class="login-button-img">
-  </RouterLink>
+    <RouterLink :to="{ name: 'Login' }">
+      <img
+        src="../../assets/img/home/main-login-img.png"
+        alt="loginbutton"
+        class="login-button-img"
+      />
+    </RouterLink>
   </div>
 
   <div v-else class="logged-in-content">
-      <p>로그인 시 표시할 화면</p>
-      <Calendar/>
-      <ResumeEssay/>
-      <Chatter/>
+    <p>로그인 시 표시할 화면</p>
+    <section>
+      <h2>나의 취준 일정</h2>
+      <Calendar />
+    </section>
+    <ResumeEssay />
+    <Chatter />
   </div>
 
   <!-- Toggle Button -->
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import Calendar from './components/Calendar.vue';
-import ResumeEssay from './components/ResumeEssay.vue';
-import Chatter from './components/Chatter.vue'
+import { ref } from "vue";
+import Calendar from "./components/Calendar.vue";
+import ResumeEssay from "./components/ResumeEssay.vue";
+import Chatter from "./components/Chatter.vue";
 // 로그인/로그아웃 상태를 대체하는 버튼 및 화면 전환용 로직
 // 나중에는 isAuthenticated나, token값 등을 사용하여 버튼 없이 자동 전환
-const isLoggedIn = ref(false)
+const isLoggedIn = ref(false);
 
 function toggleLogin() {
-  isLoggedIn.value = !isLoggedIn.value
+  isLoggedIn.value = !isLoggedIn.value;
 }
 // ----------------------------------------------------
-
 </script>
 
 <style scoped>
