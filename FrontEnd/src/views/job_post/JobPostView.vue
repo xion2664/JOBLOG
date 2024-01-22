@@ -47,7 +47,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ensure the header takes full width */
+    width: 1344px; /* Ensure the header takes full width */
+    
   }
 
   .title {

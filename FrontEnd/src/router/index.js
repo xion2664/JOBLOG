@@ -8,6 +8,8 @@ import JobPost from '@/views/job_post/JobPostView.vue'
 import JobDetail from '@/views/job_post/JobDetailView.vue' 
 import ApplicantBoard from '@/views/community/board/ApplicantBoardView.vue'
 import EmployeeBoard from '@/views/community/board/EmployeeBoardView.vue'
+import BoardCreate from '@/views/community/board/BoardCreateView.vue'
+import QnABoard from '@/views/community/qna_board/QnABoardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +61,16 @@ const router = createRouter({
       name: 'EmployeeBoard',
       component: EmployeeBoard
     },
+    {
+      path: '/qna-board',
+      name: 'QnABoard',
+      component: QnABoard
+    },
+    {
+      path: '/create-board',
+      name: 'CreateBoard',
+      component: BoardCreate
+    }
   ]
 })
 
