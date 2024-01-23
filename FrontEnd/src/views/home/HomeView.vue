@@ -49,6 +49,9 @@ function toggleLogin() {
 </script>
 
 <style scoped>
+button {
+  margin: 20px;
+}
 .main-img-container {
   display: flex;
   width: 100%;
