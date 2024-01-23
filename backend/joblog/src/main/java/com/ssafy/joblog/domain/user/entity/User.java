@@ -31,8 +31,10 @@ public class User extends BaseEntity {
     private int id;
     private String username;
     private String email;
+
     @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private UserRole role; //유저역할 [ROLE_ADMIN, ROLE_APPLICANT, ROLE_JUNIOR, ROLE_MIDDLE, ROLE_SENIOR, ROLE_EXPERT]
+
     private String provider;
     private String providerId;
 
