@@ -44,7 +44,8 @@
   }
 
   .subcontainer {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     border: 1px black solid;
     border-radius: 8px;
     padding: 10px 30px;

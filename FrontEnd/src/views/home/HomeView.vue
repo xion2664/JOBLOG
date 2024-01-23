@@ -16,6 +16,7 @@
       <p>로그인 시 표시할 화면</p>
       <Calendar/>
       <ResumeEssay/>
+      <ResumeEssay2/>
       <Chatter/>
   </div>
 
@@ -26,6 +27,7 @@
 import { ref } from 'vue'
 import Calendar from './components/Calendar.vue';
 import ResumeEssay from './components/ResumeEssay.vue';
+// import ResumeEssay2 from './components/ResumeEssay2.vue';
 import Chatter from './components/Chatter.vue'
 // 로그인/로그아웃 상태를 대체하는 버튼 및 화면 전환용 로직
 // 나중에는 isAuthenticated나, token값 등을 사용하여 버튼 없이 자동 전환
@@ -62,6 +64,6 @@ function toggleLogin() {
   border-radius: 8px;
 }
 .logged-in-content {
-  /* Styles for logged-in content */
+  width: 1344px;
 }
 </style>
