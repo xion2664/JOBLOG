@@ -15,10 +15,8 @@ import JobPost from '@/views/job_post/JobPostView.vue'
 import JobDetail from '@/views/job_post/JobDetailView.vue' 
 
 //커뮤니티 페이지
-import ApplicantBoard from '@/views/community/board/ApplicantBoardView.vue'
-import EmployeeBoard from '@/views/community/board/EmployeeBoardView.vue'
-import BoardCreate from '@/views/community/board/BoardCreateView.vue'
 import QnABoard from '@/views/community/qna_board/QnABoardView.vue'
+import ResumeCreate from '@/views/blog/application/resume/ResumeCreateView.vue'
 
 //취준로그 페이지
 import Schedule from '@/views/blog/schedule/ScheduleView.vue'
@@ -28,7 +26,7 @@ import Application from '@/views/blog/application/ApplicationView.vue'
 import EssayCreate from '@/views/blog/application/essay/EssayCreateView.vue'
 
 //프로필 세팅 페이지
-import ProfileSetting from '@/views/profile/profileView.vue'
+import ProfileSetting from '@/views/profile/ProfileView.vue'
 import EmployeeRegister from '@/views/profile/EmployeeRegisterView.vue'
 import NotificationSetting from '@/views/profile/NotificationSettingView.vue'
 import DeleteMember from '@/views/profile/DeleteMemberView.vue'
@@ -76,25 +74,11 @@ const router = createRouter({
       // /job-detail/<int: detail-pk>
     },
     {
-      path: '/applicant-board',
-      name: 'ApplicantBoard',
-      component: ApplicantBoard
-    },
-    {
-      path: '/employee-board',
-      name: 'EmployeeBoard',
-      component: EmployeeBoard
-    },
-    {
       path: '/qna-board',
       name: 'QnABoard',
       component: QnABoard
     },
-    {
-      path: '/create-board',
-      name: 'CreateBoard',
-      component: BoardCreate
-    },
+
     {
       path: '/blog-schedule',
       name: 'BlogSchedule',
@@ -110,15 +94,22 @@ const router = createRouter({
       name: 'JournalCreate',
       component: JournalCreate
     },
+// 이력서, 자소서
+
     {
       path: '/blog-application',
       name: 'BlogApplication',
       component: Application
     },
     {
-      path: '/essay-create',
+      path: '/blog-application/essay-create',
       name: 'EssayCreate',
       component: EssayCreate
+    },
+    {
+      path: '/blog-application/resume-create',
+      name: 'ResumeCreate',
+      component: ResumeCreate
     },
     {
       path: '/profile-setting',

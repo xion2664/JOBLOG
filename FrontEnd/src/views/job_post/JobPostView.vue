@@ -70,7 +70,8 @@
     width: 100%;
     text-align: center;
     gap: 10px;
-    padding: 10px;   
+    padding: 10px;  
+    box-sizing: border-box; 
   }
 
   .filter {
