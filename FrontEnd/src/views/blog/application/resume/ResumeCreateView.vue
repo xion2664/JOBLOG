@@ -147,7 +147,7 @@
 
   .reg-number {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 3fr-;
   }
   .name, .numbers {
     display: grid;
