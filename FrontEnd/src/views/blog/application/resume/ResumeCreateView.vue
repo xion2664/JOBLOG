@@ -1,43 +1,58 @@
 <template>
   <div class="resume-container">
     <div class="resume-upper">
-      <div class="resume-picture">
-
+      <div class="resume-picture" @click="triggerFileInput">
+        <img v-if="imageUrl" :src="imageUrl" alt="Profile Picture Preview" class="profileImage">
       </div>
+      <input type="file" ref="fileInput" @change="handleFileUpload" style="display:none;">
       <div class="personal-info">
         <div class="name">
-          <div class="ko-name">
+          <div class="info-title">
             이름
           </div>
           <div>
             <input type="text">
           </div>
-          <div class="en-name">
-            영문이름
+          <div class="info-title">
+            영문
           </div>
           <div>
             <input type="text">
           </div>
         </div>
         <div class="reg-number">
-          <div>주민등록번호</div>
-          <div><input type="text"></div>
+          <div class="info-title">
+            주민등록번호
+          </div>
+          <div>
+            <input type="text">
+          </div>
         </div>
         <div class="numbers">
-          <div class="mobile-number">
+          <div class="info-title">
             H.P
           </div>
           <div><input type="text"></div>
-          <div class="home-number">
+          <div class="info-title">
             Tel.
           </div>
           <div><input type="text"></div>
         </div>
         <div class="email">
-
+          <div class="info-title">
+            이메일
+          </div>
+          <div>
+            <input type="text">
+          </div>
         </div>
         <div class="address">
-
+          <div class="info-title">
+            주소
+          </div>
+          <div>
+            <input type="text">
+          </div>
         </div>
       </div>
     </div>
@@ -97,60 +112,27 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 
+const fileInput = ref(null);
+const imageUrl = ref(null);
+
+const triggerFileInput = () => {
+  fileInput.value.click();
+};
+
+const handleFileUpload = event => {
+  const file = event.target.files[0];
+  if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      imageUrl.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+};
 </script>
-
 <style scoped>
-  .resume-container {
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    width: 210mm;
-    height: 297mm;
-    gap: 10px;
-  }
+@import "@/views/blog/application/css/ResumeCreateView.css" 
 
-  .resume-upper {
-    display: grid;
-    grid-template-columns: 1fr 3.5fr;
-    border: 1px solid black;
-  }
-
-  .resume-picture {
-    border: 1px solid black;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .personal-info {
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-  }
-
-  .section {
-    border-bottom: 1px solid black;
-  }
-
-  .section-title {
-    border-bottom: 1px solid black;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-  }
-
-  table {
-    width: 100%; /* Table takes the full width of its container */
-    border-collapse: collapse; /* Optional: for a cleaner look */
-  }
-  
-  .thick {
-    border: 2px;
-  }
-
-  .reg-number {
-    display: grid;
-    grid-template-columns: 1fr 3fr-;
-  }
-  .name, .numbers {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr 3fr;
-  }
 </style>

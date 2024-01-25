@@ -47,7 +47,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1344px; /* Ensure the header takes full width */
+    min-width: 1344px; /* Ensure the header takes full width */
     
   }
 

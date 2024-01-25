@@ -54,10 +54,8 @@ const showDropdown = ref(false);
     margin: 0 10px;
     transition: background-color 0.3s ease;
     text-align: center;
-    font-family: Pretendard Variable;
+    font-weight: bold;
     font-size: 26px;
-    font-style: normal;
-    font-weight: 400;
     line-height: normal;
   }
 

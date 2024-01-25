@@ -1,9 +1,5 @@
 <template>
-  <div class="links">
-    <RouterLink :to="{ name: 'BlogSchedule' }">나의 캘린더</RouterLink> |
-    <RouterLink :to="{ name: 'BlogJournal' }">다이어리 목록</RouterLink> |
-    <div>이력서/자소서</div>
-  </div>
+  <SubNav/>
 
   <div class="application-container">
     <div class="application-left">
@@ -12,7 +8,7 @@
           <h1>이력서</h1>
         </div>
         <div class="header-right">
-          <h1>+</h1>
+          <RouterLink :to="{ name: 'ResumeCreate' }"> <h1>+</h1></RouterLink>
         </div>
         <hr>
       </div>
@@ -24,34 +20,28 @@
       <div class="application-header">
           <h1>자기소개서</h1>
         <div class="header-right">
-          <button @click="toggleModal"><h1>+</h1></button>
+          <button @click="toggleModal" class="w-btn w-btn-indigo">+ 추가하기</button>
+          <button class="dummy-essay" @click="addDummyEssay">자소서 있는척 해보기</button>
         </div>
         <hr>
       </div>
-      <div class="essay-list">
-        <div v-if="resumeList.length > 0">
-        자소서 나올 곳
-        </div>
-        <div v-else class="empty-essay"> 
-          <p>아직 자기소개서를 작성하지 않으신 것 같아요!</p>
-          <p>자기소개서 문항을 하나 작성해볼까요?</p>
-        </div>
-      </div>
-    </div>
+      <EssayList :resumeList="resumeList"/>
+    </div> 
   </div>
-
   <div v-if="showModal" class="modal">
     <div class="modal-content">
       <h2>새 항목 작성</h2>
       <div>
-      <label for="category">카테고리:</label>
-      <input type="text" id="category" v-model="newEssay.category">
-      <button v-if="!showAdd" @click="toggleShowAdd">추가</button>
-      <button v-if="showAdd" @click="toggleShowAdd">취소</button>
+        <label for="job-post">채용공고:</label>
+        <input type="text" class="job-post-dropdown">
+        <label for="category">카테고리:</label>
+        <input type="text" class="category-dropdown" v-model="newEssay.category">
+        <button v-if="!showAdd" @click="toggleShowAdd" class="w-btn w-btn-indigo" type="button">추가</button>
+        <button v-if="showAdd" @click="toggleShowAdd" class="w-btn w-btn-indigo" type="button">취소</button>
 
-      <div v-if="showAdd" class="add-category">
-        <input type="text" placeholder="카테고리를 추가하세요">
-      </div>
+        <div v-if="showAdd" class="add-category">
+          <input type="text" placeholder="카테고리를 추가하세요">
+        </div>
       </div>
       <label for="question">질문:</label>
       <input type="text" id="question" v-model="newEssay.question">
@@ -60,8 +50,9 @@
       <textarea id="answer" v-model="newEssay.answer"></textarea>
       <div>{{ newEssay.answer.length }}자</div>
       <div class="modal-buttons">
-        <button @click="testing">제출</button>
-        <button @click="toggleModal">닫기</button>
+        <button @click="submitEssay" class="w-btn w-btn-indigo" type="button">제출</button>
+
+        <button @click="toggleModal" class="w-btn w-btn-indigo" type="button">닫기</button>
       </div>
     </div>
   </div>
@@ -70,80 +61,80 @@
 <script setup>
 import axios from 'axios';
 import { ref, computed, onMounted } from 'vue';
-import { useApplicationStore } from '@/stores/application';
 
-const applicationStore = useApplicationStore()
+import SubNav from '../_component/SubNav.vue';
+import EssayList from '@/views/blog/application/components/EssayList.vue'
+import ResumeCreateView from './resume/ResumeCreateView.vue';
 
-const resumeList = applicationStore.resumeList
-console.log(applicationStore.resumeList)
+const resumeList = ref([])
+
 const showModal = ref(false);
 const toggleModal = function() {
   showModal.value = !showModal.value
   console.log(showModal.value)
 }
 
-const newEssay = ref({
-  category: '',
+//testing code
+const addDummyEssay = () => {
+  // Determine the new ID
+  let newId = 1;
+  if (resumeList.value.length > 0) {
+    // Find the maximum ID in the current list and increment it
+    newId = Math.max(...resumeList.value.map(resume => resume.id)) + 1;
+  }
+
+  const dummyData = {
+    essayId: newId,
+    categoryId: 1,
+    userId: 1,
+    recruitId: 1,
+    question: `Dummy Resume Title ${newId}`,
+    content: `Dummy resume content for item ${newId}`,
+    // Add other fields as needed
+  };
+
+  resumeList.value.push(dummyData);
+};
+
+const newEssay = ref({ 
+  categoryId: '',
   question: '',
   answer: ''
 })
 
 const submitEssay = () => {
-  // Logic to handle essay submission
-  // After submission:
+  let test = 1
+  const dummyData = {
+    essayId: test,
+    categoryId: 1,
+    userId: 1,
+    recruitId: 1,
+    question: newEssay.value.question,
+    answer: newEssay.value.answer,
+    // Add other fields as needed
+  }
+
+  resumeList.value.push(dummyData)
+
   showModal.value = false
-  // Reset form or handle post-submission logic
+  newEssay.value = { 
+    categoryId: '',
+    question: '',
+    answer: ''
+  }
 }
+// ------------------------------------------------
 
-const submitEssay2 = function() {
-  axios({
-    method: 'put', 
-    url: `notyet`,
-    headers: {
-      Authorization: `Token`
-    },
-    data: {
-      question: newEssay.value.question,
-      answer: newEssay.value.answer
-    }
-  })
-  
-}
-
-const category = ref({
-  categoryName: ''
-})
 
 const showAdd = ref(false)
 const toggleShowAdd = function() {
   showAdd.value = !showAdd.value
 }
 
-const submitCategory = function() {
-  axios({
-    method: 'put', 
-    url: `notyet`,
-    headers: {
-      Authorization: `Token`
-    },
-    data: {
-      question: newEssay.value.question,
-      answer: newEssay.value.answer
-    }
-  })
-  
-}
 
-const testing = function() {
-  console.log(newEssay.value)
-}
 </script>
 
 <style scoped>
-  .links {
-    display: flex;
-    gap: 5px;
-  }
 
   .application-container {
     display: grid;  
@@ -164,6 +155,7 @@ const testing = function() {
     border-radius: 8px;
     box-sizing: border-box;
     padding: 40px;
+    max-height: 900px;
   }
 
   .application-header {
@@ -172,7 +164,9 @@ const testing = function() {
   }
 
   .header-right {
+    display: flex;
     margin-left: auto;
+    justify-content: center;
   }
 
   .application-list, .essay-list {
@@ -194,7 +188,7 @@ const testing = function() {
     top: 10%;
     width: 1100px;
     height: 700px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,5 +217,24 @@ const testing = function() {
   }
   .modal-content h2 {
     margin-top: 0;
+  }
+
+
+  p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: fit-content;
+  }
+
+  label {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  input {
+    font-size: 24px;
+    margin-right: 30px;
   }
 </style>

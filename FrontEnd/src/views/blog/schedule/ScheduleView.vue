@@ -1,9 +1,6 @@
 <template>
-  <div class="links">
-    <div>나의 캘린더</div> |
-    <RouterLink :to="{ name:'BlogJournal' }">다이어리 목록</RouterLink> |
-    <RouterLink :to="{ name:'BlogApplication' }">이력서/자소서</RouterLink>
-  </div>
+  <SubNav/>
+
   <div class="blog-schedule">
       <div>
           <h1>취준로그</h1>
@@ -21,6 +18,8 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
+import SubNav from '../_component/SubNav.vue';
+
 </script>
 
 <style scoped>
@@ -48,8 +47,4 @@ import { RouterLink } from 'vue-router';
     border-radius: 8px;
   }
 
-  .links {
-    display: flex;
-    gap: 5px;
-  }
 </style>
