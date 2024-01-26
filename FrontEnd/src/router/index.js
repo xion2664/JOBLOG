@@ -37,39 +37,39 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'Home',
-      component: HomeView
+      path: "/",
+      name: "Home",
+      component: HomeView,
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: LoginView
+      path: "/login",
+      name: "Login",
+      component: LoginView,
     },
     {
-      path: '/test',
-      name: 'test',
-      component: Test
+      path: "/test",
+      name: "test",
+      component: Test,
     },
     {
-      path: '/coffee-chat',
-      name: 'Coffee',
-      component: CoffeeChat
+      path: "/coffee-chat",
+      name: "Coffee",
+      component: CoffeeChat,
     },
     {
-      path: '/employee-register',
-      name: 'EmployeeRegister',
-      component: EmployeeRegister
+      path: "/employee-register",
+      name: "EmployeeRegister",
+      component: EmployeeRegister,
     },
     {
-      path: '/job-posts',
-      name: 'Jobs',
-      component: JobPost
+      path: "/job-posts",
+      name: "Jobs",
+      component: JobPost,
     },
     {
-      path: '/job-detail',
-      name: 'JobDetail',
-      component: JobDetail
+      path: "/job-detail",
+      name: "JobDetail",
+      component: JobDetail,
       // 추후에 각 번호로 입력 받아야함
       // /job-detail/<int: detail-pk>
     },
@@ -134,4 +134,4 @@ const router = createRouter({
   ]
 })
 
-export default router
+export default router;
