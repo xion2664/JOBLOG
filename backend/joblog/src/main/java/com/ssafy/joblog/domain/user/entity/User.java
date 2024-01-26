@@ -8,6 +8,7 @@ import com.ssafy.joblog.domain.board.entity.PostLike;
 import com.ssafy.joblog.global.entity.BaseEntity;
 import com.ssafy.joblog.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,15 +50,6 @@ public class User extends BaseEntity {
     private String phoneNumber;
     private Date birthDate;
 
-//    @CreationTimestamp
-//    private LocalDateTime createdDate;
-//    @UpdateTimestamp
-//    private LocalDateTime modifiedDate;
-//
-//    @ColumnDefault("true")
-//    @Column(columnDefinition = "TINYINT(1)")
-//    private boolean deleteOrNot;
-
     //연관관계 주인x
     @OneToMany(mappedBy = "user")
     private List<Post> posts = new ArrayList<>();
@@ -74,16 +66,20 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<PostCommentLike> commentLikes = new ArrayList<>();
 
+    //연관관계 주인x
+    @OneToOne(mappedBy = "user")
+    private Token token;
+
 
     //Spring Security에서 사용
     @Builder
-    public User(String username, String email, UserRole role, String provider, String providerId) {
+    public User(int id, String username, String email, UserRole role, String provider, String providerId) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.role = role;
         this.provider = provider;
         this.providerId = providerId;
-//        this.createdDate = createdDate;
     }
 
 }
