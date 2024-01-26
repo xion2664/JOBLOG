@@ -47,7 +47,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1344px; /* Ensure the header takes full width */
+    min-width: 1344px; /* Ensure the header takes full width */
     
   }
 
@@ -70,7 +70,8 @@
     width: 100%;
     text-align: center;
     gap: 10px;
-    padding: 10px;   
+    padding: 10px;  
+    box-sizing: border-box; 
   }
 
   .filter {
