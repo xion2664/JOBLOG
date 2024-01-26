@@ -1,4 +1,4 @@
-package com.ssafy.joblog.domain.user.oauth;
+package com.ssafy.joblog.domain.user.service;
 
 
 import com.ssafy.joblog.domain.user.config.PrincipalDetails;
