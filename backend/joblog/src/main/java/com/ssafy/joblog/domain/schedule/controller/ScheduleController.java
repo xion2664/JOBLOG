@@ -1,10 +1,7 @@
 package com.ssafy.joblog.domain.schedule.controller;
 
-import com.ssafy.joblog.domain.board.entity.PostCategory;
 import com.ssafy.joblog.domain.schedule.dto.request.ScheduleCreateRequestDto;
 import com.ssafy.joblog.domain.schedule.dto.request.ScheduleUpdateRequestDto;
-import com.ssafy.joblog.domain.schedule.dto.response.ScheduleResponseDto;
-import com.ssafy.joblog.domain.schedule.entity.Schedule;
 import com.ssafy.joblog.domain.schedule.service.ScheduleService;
 import com.ssafy.joblog.domain.user.repository.UserRepository;
 import com.ssafy.joblog.global.dto.StatusResponseDto;
