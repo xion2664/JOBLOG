@@ -133,7 +133,24 @@
     isReadOnly.value = !isReadOnly.value
   }
   
-  
+  //이미지 업로드
+  const fileInput = ref(null);
+const imageUrl = ref(null);
+
+const triggerFileInput = () => {
+  fileInput.value.click();
+};
+
+const handleFileUpload = event => {
+  const file = event.target.files[0];
+  if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      imageUrl.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+};
   </script>
   <style scoped>
   @import "@/views/blog/application/css/ResumeCreateView.css" 
