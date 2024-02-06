@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class EssayCreateRequestDto {
-//    private int essayId;
+
     private int userId;
     private long recruitId;
     private int categoryId;

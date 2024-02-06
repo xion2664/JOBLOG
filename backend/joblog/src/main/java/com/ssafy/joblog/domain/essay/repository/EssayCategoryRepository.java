@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface EssayCategoryRepository extends JpaRepository<EssayCategory, Integer> {
 
-    List<EssayCategory> findByUserId(Integer userId);
+    List<EssayCategory> findByUserIdAndIsDeleteIsFalse(Integer userId);
 
     @Modifying
     @Query("UPDATE EssayCategory category SET category.isDelete = true WHERE category.id = :id")

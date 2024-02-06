@@ -15,9 +15,11 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.webjars.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -43,7 +45,7 @@ public class EssayService {
     // 2. 자소서 조회하기
     @Transactional(readOnly = true)
     public List<EssayResponseDto> getEssays(Integer userId) {
-        List<Essay> essays = essayRepository.findByUserId(userId);
+        List<Essay> essays = essayRepository.findByUserIdAndIsDeleteIsFalse(userId);
         List<EssayResponseDto> getEssaysList = new ArrayList<>();
         essays.forEach(essay -> getEssaysList.add(essay.toEssayResponseDto()));
         return getEssaysList;
@@ -51,8 +53,9 @@ public class EssayService {
 
     // 3. 자소서 상세 조회하기
     @Transactional(readOnly = true)
-    public EssayResponseDto getEssay(Integer essayId) {
-        Essay essay = essayRepository.findById(essayId).orElseThrow(() -> new IllegalArgumentException("해당 자소서가 존재하지 않습니다"));
+    public EssayResponseDto getEssay(Integer id) {
+        Optional<Essay> optionalEssay = essayRepository.findByIdAndIsDeleteIsFalse(id);
+        Essay essay = optionalEssay.orElseThrow(() -> new NotFoundException("해당 자소서가 존재하지 않습니다"));
         EssayResponseDto essayResponseDto = essay.toEssayResponseDto();
         return essayResponseDto;
     }

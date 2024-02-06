@@ -33,7 +33,7 @@ public class EssayCategoryService {
     // 2. 자소서 카테고리 조회하기
     @Transactional(readOnly = true)
     public List<EssayCategoryResponseDto> getEssayCategories(Integer userId) {
-        List<EssayCategory> categories = essayCategoryRepository.findByUserId(userId);
+        List<EssayCategory> categories = essayCategoryRepository.findByUserIdAndIsDeleteIsFalse(userId);
         List<EssayCategoryResponseDto> getCategoryList = new ArrayList<>();
         categories.forEach(category -> getCategoryList.add(category.toEssayCategoryResponseDto()));
         return getCategoryList;
