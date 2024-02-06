@@ -33,7 +33,8 @@ public class EssayService {
 
     // 1. 자소서 등록하기
     public void createEssay(EssayCreateRequestDto essayCreateRequestDto) {
-        User user = userRepository.findById(essayCreateRequestDto.getUserId()).orElseThrow(()-> new IllegalArgumentException("해당 사용자가 존재하지 않습니다"));
+        User user = userRepository.findById(essayCreateRequestDto.getUserId())
+                .orElseThrow(()-> new IllegalArgumentException("해당 사용자가 존재하지 않습니다"));
         Recruit recruit = recruitRepository.findById(essayCreateRequestDto.getRecruitId())
                 .orElseThrow(()-> new IllegalArgumentException("해당 채용이 존재하지 않습니다"));
         EssayCategory essayCategory = essayCategoryRepository.findById(essayCreateRequestDto.getCategoryId())
@@ -47,7 +48,14 @@ public class EssayService {
     public List<EssayResponseDto> getEssays(Integer userId) {
         List<Essay> essays = essayRepository.findByUserIdAndIsDeleteIsFalse(userId);
         List<EssayResponseDto> getEssaysList = new ArrayList<>();
-        essays.forEach(essay -> getEssaysList.add(essay.toEssayResponseDto()));
+        essays.forEach(essay -> getEssaysList.add(EssayResponseDto.builder()
+                .essayId(essay.getId())
+                .recruitId(essay.getRecruit().getId())
+                .categoryId(essay.getEssayCategory().getId())
+                .userId(essay.getUser().getId())
+                .question(essay.getQuestion())
+                .answer(essay.getAnswer())
+                .build()));
         return getEssaysList;
     }
 

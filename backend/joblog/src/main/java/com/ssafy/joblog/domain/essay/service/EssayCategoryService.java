@@ -25,7 +25,8 @@ public class EssayCategoryService {
 
     // 1. 자소서 카테고리 등록하기
     public void createEssayCategory(EssayCategoryCreateRequestDto essayCategoryCreateRequestDto) {
-        User user = userRepository.findById(essayCategoryCreateRequestDto.getUserId()).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 존재하지 않습니다"));
+        User user = userRepository.findById(essayCategoryCreateRequestDto.getUserId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 존재하지 않습니다"));
         EssayCategory essayCategory = essayCategoryCreateRequestDto.createEssayCategory(user, essayCategoryCreateRequestDto.getCategoryName());
         essayCategoryRepository.save(essayCategory);
     }
@@ -35,7 +36,10 @@ public class EssayCategoryService {
     public List<EssayCategoryResponseDto> getEssayCategories(Integer userId) {
         List<EssayCategory> categories = essayCategoryRepository.findByUserIdAndIsDeleteIsFalse(userId);
         List<EssayCategoryResponseDto> getCategoryList = new ArrayList<>();
-        categories.forEach(category -> getCategoryList.add(category.toEssayCategoryResponseDto()));
+        categories.forEach(category -> getCategoryList.add(EssayCategoryResponseDto.builder()
+                .categoryId(category.getId())
+                .categoryName(category.getQuestion_category_name())
+                .build()));
         return getCategoryList;
     }
 

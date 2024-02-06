@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import static jakarta.persistence.FetchType.LAZY;
 
@@ -27,6 +28,7 @@ public class EssayCategory extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ColumnDefault("기타")
     private String question_category_name;
 
     // 생성자
@@ -41,15 +43,4 @@ public class EssayCategory extends BaseEntity {
     public void updateEssayCategory(EssayCategoryUpdateRequestDto essayCategoryUpdateRequestDto) {
         this.question_category_name = essayCategoryUpdateRequestDto.getCategoryName();
     }
-
-    // Entity to Dto
-    public EssayCategoryResponseDto toEssayCategoryResponseDto() {
-        return EssayCategoryResponseDto.builder()
-                .categoryId(id)
-                .categoryName(question_category_name)
-                .build();
-    }
-
-
-
 }

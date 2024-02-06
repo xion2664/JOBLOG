@@ -11,6 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EssayCategoryResponseDto {
     private int categoryId;
-    private int userId;
     private String categoryName;
 }
