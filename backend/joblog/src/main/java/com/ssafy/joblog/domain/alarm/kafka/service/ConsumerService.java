@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.joblog.domain.alarm.kafka.repository.EmitterRepository;
 import com.ssafy.joblog.domain.alarm.kafka.vo.AlarmVo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -83,7 +85,7 @@ public class ConsumerService {
         listenAndSend(message);
     }
 
-    @KafkaListener(topics = "schedule", groupId = "schedule")
+    @KafkaListener(topics = "schedule", groupId = "schedule", containerFactory = "kafkaListenerContainerFactory")
     public void listenScheduleAlarm(String message) {
         listenAndSend(message);
     }

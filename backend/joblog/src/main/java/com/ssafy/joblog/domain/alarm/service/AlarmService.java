@@ -80,12 +80,14 @@ public class AlarmService {
         producerService.chatRejectAlarm(userId, "커피챗 거절");
     }
 
-    @Scheduled(cron = "0 0 0 * * *")
+    @Scheduled(cron = "0/10 * * * * *")
+//    @Scheduled(cron = "0 0 0 * * *")
     public void sendScheduleAlarm() {
         LocalDateTime today = LocalDateTime.now();
         LocalDateTime tomorrow = today.plusDays(1);
         List<Schedule> schedules = scheduleRepository.findAllByEndDateBetweenAndIsDeleteFalse(today, tomorrow);
         schedules.forEach(schedule -> {
+            System.out.println("schedule : " + schedule.getTitle());
             User user = userRepository.findById(schedule.getUser().getId()).orElseThrow(() -> { return new IllegalArgumentException("해당 사용자를 찾을 수 없습니다"); });
             Alarm alarm = Alarm.builder()
                     .user(user)
