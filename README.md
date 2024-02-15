@@ -1,7 +1,7 @@
 # JOBLOG
 <img> 메인 사진 들어갈 예정
 
-# 목차
+## 목차
 [1️. 개요](#1️⃣-개요)<br>
 [2. 팀원 소개](#2️⃣-팀원-소개)<br>
 [3. 개발 환경](#3️⃣-개발-환경)<br>
@@ -12,7 +12,7 @@
 <br><br>
 
 # 1️⃣ 개요
-## JOBLOG는 청년이 주체적으로 취업 과정을 준비해나갈 수 있도록 취업 전반의 과정을 케어해주는 종합 취업지원 웹 서비스입니다
+### JOBLOG는 청년이 주체적으로 취업 과정을 준비해나갈 수 있도록 취업 전반의 과정을 케어해주는 종합 취업지원 웹 서비스입니다<br>
 
 ### 💡 한곳에 모아, 한눈에 볼 수 있는 내 정보
 - 이력서 작성 자동화
@@ -39,7 +39,7 @@
 
 # 3️⃣ 개발 환경
 <div style="display:flex; flex-direction:column; align-items:flex-start;">
-    <p style="font-size: 18px"><strong>⚡ Management Tool</stron-g></p>
+    <p><strong>⚡ Management Tool</stron-g></p>
     <div>
         <img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white"> 
         <img src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white">  
@@ -48,13 +48,13 @@
        <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
     </div>
     <br>
-    <p style="font-size: 18px"><strong>⚡ IDE</strong></p>
+    <p><strong>⚡ IDE</strong></p>
     <div>
         <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white"> 
         <img src="https://img.shields.io/badge/intellij-000000?style=for-the-badge&logo=intellijidea&logoColor=white">  
     </div>
     <br>
-    <p style="font-size: 18px"><strong>⚡ Infra</strong></p>
+    <p><strong>⚡ Infra</strong></p>
     <div>
         <img src="https://img.shields.io/badge/amazon ec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"> 
         <img src="https://img.shields.io/badge/amazon s3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> 
@@ -63,7 +63,7 @@
     </div>
     <br>
     <!-- Frontend -->
-    <p style="font-size: 18px"><strong>⚡ Frontend</strong></p>
+    <p><strong>⚡ Frontend</strong></p>
     <div>
         <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
         <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
@@ -73,7 +73,7 @@
     </div>
     <br>
     <!-- Backend -->
-    <p style="font-size: 18px"><strong>⚡ Backend</strong></p>
+    <p><strong>⚡ Backend</strong></p>
     <div>
         <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white"> 
         <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=spring boot&logoColor=white">
@@ -86,19 +86,19 @@
     </div>
     <br>
     <!-- Database -->
-    <p style="font-size: 18px"><strong>⚡ Database</strong></p>
+    <p><strong>⚡ Database</strong></p>
     <div>
         <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
     </div>
     <br>
     <!-- Server -->
-    <p style="font-size: 18px"><strong>⚡ Server</strong></p>
+    <p><strong>⚡ Server</strong></p>
     <div>
         <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black">
     </div>
     <br>
     <!-- Others -->
-    <p style="font-size: 18px"><strong>⚡ Code review</strong></p>
+    <p><strong>⚡ Code review</strong></p>
     <div>
         <img src="https://img.shields.io/badge/gerrit-EEEEEE?style=for-the-badge&logo=gerrit&logoColor=black"> 
     </div>
