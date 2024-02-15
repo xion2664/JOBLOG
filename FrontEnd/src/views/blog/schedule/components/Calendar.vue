@@ -50,9 +50,9 @@ function convertRecruit(data) {
 }
 
 onMounted(async () => {
-  await Promise.all([getSchedules(), getSelections(), getMyRecruits()]);
+  await Promise.all([getSchedules(), getMyRecruits()]);
 
-  currentEvents.value = [...convertSchedule(schedules), ...convertSelection(selections), ...convertRecruit(myRecruits)];
+  currentEvents.value = [...convertSchedule(schedules), ...convertRecruit(myRecruits)];
 
   filterTodayEvents();
   getSchedules();
@@ -147,29 +147,6 @@ const getSchedules = async () => {
   } catch (err) {
     if (err.response && err.response.status === 500) {
       router.push("/login2");
-    } else {
-    }
-  }
-};
-
-let selections = [];
-
-const getSelections = async () => {
-  try {
-    authStore.updateUserInfoFromToken();
-    const config = {
-      headers: {
-        Authoriation: `${authStore.accessToken}`,
-      },
-    };
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_BASE_URL}/selection/${authStore.userInfo.sub}`,
-      config
-    );
-    selections = response.data;
-  } catch (err) {
-    if (err.response && err.response.status === 500) {
-      router.push("/login");
     } else {
     }
   }

@@ -50,29 +50,15 @@ function convertRecruit(data) {
   }));
 }
 
-//
-//
-//
-////////////////////////////////////// onMounted ////////////////
 onMounted(async () => {
-  await Promise.all([getSchedules(), getSelections(), getMyRecruits()]);
-  // 이제 schedules, selections, myRecruits가 각각의 API 호출을 통해 채워졌다고 가정합니다.
+  await Promise.all([getSchedules(), getMyRecruits()]);
 
-  // FullCalendar 이벤트로 설정
-  currentEvents.value = [...convertSchedule(schedules), ...convertSelection(selections), ...convertRecruit(myRecruits)];
+  currentEvents.value = [...convertSchedule(schedules), ...convertRecruit(myRecruits)];
 
-  // FullCalendar 갱신을 위해 eventsSet 함수 호출 (필요한 경우)
-  // 주의: FullCalendar Vue 컴포넌트가 이 방식으로 동적 업데이트를 지원하지 않을 수 있습니다.
-  // eventsSet 메서드 대신, initialEvents prop을 업데이트하는 방식을 고려해야 할 수도 있습니다.
-
-  filterTodayEvents(); // 초기 로딩 시 오늘의 이벤트를 필터링하여 selectedDateEvents에 할당
+  filterTodayEvents();
   getSchedules();
 });
 
-//
-//
-//
-////////////////////////////////////// calendarOptions ////////////////
 const calendarOptions = ref({
   plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
   headerToolbar: {
@@ -170,7 +156,6 @@ const getSchedules = async () => {
     };
     const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/schedule/${authStore.userInfo.sub}`, config);
     schedules = response.data;
-    console.log(schedules);
   } catch (err) {
     if (err.response && err.response.status === 500) {
       router.push("/login2");
@@ -180,40 +165,6 @@ const getSchedules = async () => {
   }
 };
 
-//
-//
-//
-////////////////////////////////////// selected 전체 조회 /////
-let selections = [];
-
-const getSelections = async () => {
-  try {
-    authStore.updateUserInfoFromToken();
-    const config = {
-      headers: {
-        Authoriation: `${authStore.accessToken}`,
-      },
-    };
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_BASE_URL}/selection/${authStore.userInfo.sub}`,
-      config
-    );
-    selections = response.data;
-    console.log(selections);
-  } catch (err) {
-    if (err.response && err.response.status === 500) {
-      router.push("/login2");
-    } else {
-      // Handle other errors or a case where the error does not have a response object
-      // console.log("token", token); // Logging the token for debugging purposes
-    }
-  }
-};
-
-//
-//
-//
-////////////////////////////////////// myRecruit 전체 조회 /////
 let myRecruits = [];
 
 const getMyRecruits = async () => {
@@ -229,7 +180,6 @@ const getMyRecruits = async () => {
       config
     );
     myRecruits = response.data;
-    console.log(myRecruits);
   } catch (err) {
     if (err.response && err.response.status === 500) {
       router.push("/login");

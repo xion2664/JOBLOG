@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { RouterLink } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 const logout = function () {
@@ -11,9 +11,17 @@ const authStore = useAuthStore();
 const loggedIn = computed(() => !!authStore.userInfo);
 const userInfo = ref({});
 
-onMounted(async () => {
-  await authStore.updateUserInfoFromToken();
-  userInfo.value = authStore.userInfo;
+onMounted(() => {
+  if (loggedIn.value) {
+    authStore.updateUserInfoFromToken();
+    userInfo.value = authStore.userInfo;
+  }
+});
+watch(loggedIn, async (newVal) => {
+  if (newVal) {
+    await authStore.updateUserInfoFromToken();
+    userInfo.value = authStore.userInfo;
+  }
 });
 </script>
 
@@ -64,13 +72,13 @@ onMounted(async () => {
       </transition>
 
       <div class="right" v-if="!loggedIn">
-        <RouterLink :to="{ name: 'Login' }">
+        <RouterLink :to="{ name: 'Login2' }">
           <a id="header-login-btn" class="btn-s lined-bg f-color-c h-solid-c h-lined-c a-bright">로그인 · 회원가입</a>
         </RouterLink>
       </div>
       <div class="right" v-else>
         <RouterLink :to="{ name: 'Alarm' }">
-          <div id="alert" class="pointer h-bright a-dark" :class="{ 'alert-highlighted': hasAlarm }">
+          <div id="alert" class="pointer h-bright a-dark">
             <img src="@/assets/img/icon/non-alert-icon.svg" alt="" />
           </div>
         </RouterLink>

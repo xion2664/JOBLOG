@@ -54,7 +54,7 @@ const spellCheck = async () => {
 const expectedQuestion = ref("");
 
 const getQuestion = async () => {
-  await essayResumeStore.expectedQuestion(essay.essayId);
+  await essayResumeStore.expectedQuestion(essay.value.essayId);
   expectedQuestion.value = essayResumeStore.expectedQuestions;
 };
 

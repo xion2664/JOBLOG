@@ -192,6 +192,7 @@ export const useEssayResumeStore = defineStore("essayResume", {
     async expectedQuestion(id) {
       const authStore = useAuthStore();
       await authStore.updateUserInfoFromToken();
+      console.log(id);
       const list = {
         essayList: null,
       };

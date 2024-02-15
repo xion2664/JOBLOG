@@ -7,6 +7,7 @@ import HomeView from "../views/home/HomeView.vue";
 import LoginView from "../views/home/LoginView.vue";
 import SignIn from "../views/home/components/login/SignIn.vue";
 import DeleteUser from "@/views/home/DeleteUserView.vue";
+import LoginView2 from "@/views/home/LoginView2.vue";
 
 //취준토크 페이지
 import CoffeeChat from "@/views/coffee_chat/CoffeeChatView.vue";
@@ -72,7 +73,11 @@ const router = createRouter({
       name: "Login",
       component: LoginView,
     },
-
+    {
+      path: "/login2",
+      name: "Login2",
+      component: LoginView2,
+    },
     {
       path: "/sign-in",
       name: "SignIn",
@@ -272,6 +277,7 @@ router.beforeEach((to, from, next) => {
 
   const publicRoutes = [
     "Login",
+    "Login2",
     "SignIn",
     "Jobs",
     "Home",
