@@ -21,13 +21,7 @@ export const useCommunityStore = defineStore("community", {
         const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/community`, {});
 
         this.posts = response.data;
-      } catch (err) {
-        if (err.response && err.response.status === 500) {
-          router.push("/login");
-        } else {
-        }
-        this.posts = [];
-      }
+      } catch (err) {}
     },
 
     async getPost(id) {

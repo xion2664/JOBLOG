@@ -11,7 +11,6 @@ export const useBlogReviewStore = defineStore("blogReview", {
     async getMyJobs() {
       const authStore = useAuthStore();
       await authStore.updateUserInfoFromToken();
-      const router = useRouter();
       const config = {
         headers: {
           Authorization: `${authStore.accessToken}`,
@@ -21,9 +20,6 @@ export const useBlogReviewStore = defineStore("blogReview", {
         const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/myRecruit/${authStore.userInfo.sub}`, config);
         this.myJobs = res.data;
       } catch (err) {
-        if (err.response && err.response.status === 500) {
-          router.push("/login");
-        }
         console.error(err);
       }
     },

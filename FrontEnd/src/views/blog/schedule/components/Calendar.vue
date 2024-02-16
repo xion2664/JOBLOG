@@ -144,12 +144,7 @@ const getSchedules = async () => {
     };
     const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/schedule/${authStore.userInfo.sub}`, config);
     schedules = response.data;
-  } catch (err) {
-    if (err.response && err.response.status === 500) {
-      router.push("/login2");
-    } else {
-    }
-  }
+  } catch (err) {}
 };
 
 let myRecruits = [];
@@ -167,12 +162,7 @@ const getMyRecruits = async () => {
       config
     );
     myRecruits = response.data;
-  } catch (err) {
-    if (err.response && err.response.status === 500) {
-      router.push("/login");
-    } else {
-    }
-  }
+  } catch (err) {}
 };
 
 const createSchedule = async () => {
