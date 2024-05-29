@@ -1,5 +1,5 @@
 # JOBLOG
-![JOBLOG_MAIN](https://lab.ssafy.com/uploads/7fd63e4ff87dc173fb01ab9392cee637/JOBLOG_MAIN.PNG)
+![JOBLOG_MAIN](https://lab.ssafy.com/s10-webmobile1-sub2/S10P12B204/uploads/7fd63e4ff87dc173fb01ab9392cee637/JOBLOG_MAIN.PNG)
 
 ## 목차
 [1️. 개요](#1️⃣-개요)<br>
